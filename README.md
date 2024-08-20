@@ -1,6 +1,6 @@
-  =>  Template Name    : Desai Law Firm
+  =>  Website Name    : Desai Law Firm
 
-  =>  Template Author  : Harshad Desai
+  =>  Author Name  : Harshad Desai
 
   =>  Author Website   : https://harshaddesai04.github.io/Harshad_Desai/
 
