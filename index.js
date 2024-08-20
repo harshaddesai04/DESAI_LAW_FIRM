@@ -3,7 +3,7 @@ const path = require('path');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // Serve static files from the 'public' directory
@@ -88,7 +88,7 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 
