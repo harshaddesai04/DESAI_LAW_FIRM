@@ -23,10 +23,10 @@ const con = mysql.createConnection({
     database: "appointments"
 });
 
-con.connect((err) => {
-    if (err) throw err;
-    console.log("Connected to MySQL database!");
-});
+// con.connect((err) => {
+//     if (err) throw err;
+//     console.log("Connected to MySQL database!");
+// });
 
 // Function to convert MM/DD/YYYY to YYYY-MM-DD
 function formatDate(dateStr) {
