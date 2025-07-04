@@ -427,45 +427,67 @@
     <script src="./js/main.js"></script>
 
     <!-- Appointments Requests -->
-    <script src="./index.js"></script>
-
     <script>
-        const forms = document.getElementById('appointmentForm')
-        forms.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-        
-            const formData = new FormData(this);
-            const jsonData = {};
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });
-        
-            fetch('/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(jsonData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display the success message
-                const msgElement = document.getElementById('msg');
-                msgElement.textContent = data.message;
-                
-                
-                // Clear the message after 5 seconds
-                setTimeout(() => {
-                    msgElement.textContent = '';
-                }, 5000);
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxU58Q-R896coSwZ3EGzVSCKj8k3iV_wB74MhmTQrehlGdJe9t8GNyejVaNfGuae1uy/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById('msg');
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Appointment Requests Send Successfully!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },6000)
 
-                forms.reset()
+                form.reset()
             })
-            .catch(error => {
-                console.error('Error:', error);
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+
+    
+    <!--  <script src="./index.js"></script>
+    
+        <script>
+            const forms = document.getElementById('appointmentForm')
+            forms.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+            
+                const formData = new FormData(this);
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+            
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display the success message
+                    const msgElement = document.getElementById('msg');
+                    msgElement.textContent = data.message;
+                    
+                    
+                    // Clear the message after 5 seconds
+                    setTimeout(() => {
+                        msgElement.textContent = '';
+                    }, 5000);
+    
+                    forms.reset()
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             });
-        });
-        </script>
+            </script> -->
 
 </body>
 
